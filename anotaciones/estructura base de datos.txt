@@ -1,0 +1,40 @@
+tabla preguntas
+-preg1
+-preg2
+-preg3
+-preg4
+-pregunta correcta
+-imagen o video
+-tematica o codigo de tematica (FK)
+
+tabla tematica
+-nombre
+
+
+tabla examen
+-id
+-descrpcion
+
+tabla darte_alta
+-correo (PK)
+
+tabla usuarios
+
+
+
+para relacion muchos-muchos crear tabla con:
+-id_pregunta(PK)
+-id_examen(PK)
+
+tabla examenes_realizados (muchos-muchos)
+-id_examen_realizado(PK)
+-examen_realizado
+-usuario_clave(PK)
+-usuario_nombre
+-fecha(inicio y fin)
+
+
+se puede hacer examen de los falos de un usuario y posible filtro por tematica,
+con posibilidad de pintar una grafica con la tematica mas fallada.
+Se puede revisar la tabla examenes realizados para saber las respuestas
+falladas
