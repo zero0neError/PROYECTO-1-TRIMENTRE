@@ -8,6 +8,11 @@
     outline: none;
 }
 
+body{
+
+    text-align: center;
+}
+
 form{
 
     position: relative;

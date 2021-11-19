@@ -1,0 +1,13 @@
+-Login - Servidor
+-Registro de usuarios - Servidor
+-Historico de examenes - Cliente
+	Presionar en la cabecera para ordenar
+	Agrupacion en 10 filas y usando tambien paginas
+	-Revisar examen
+
+-Hacer examen - Cliente
+	Recibe JSON y con el objeto examen(Enunciado, Preguntas, Contenido audiovisual(puede no haber))
+	Añadir pregunta dudosa
+
+
+-Revisar examen - Cliente
