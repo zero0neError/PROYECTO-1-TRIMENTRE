@@ -43,18 +43,15 @@ Class Usuario{
         return $this->password;
     }
 
-
     public function getFechaNacimiento(){
 
         return $this->FechaNacimiento;
     }
 
-
     public function getRol(){
 
         return $this->rol;
     }
-
 
     public function getFoto(){
 
