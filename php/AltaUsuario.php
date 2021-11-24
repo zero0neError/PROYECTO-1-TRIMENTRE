@@ -23,14 +23,8 @@
             
             <p>Confirmar contraseña<input type='text' name='txtPassword2' id='' placeholder='1234'></p>
             
-            <p>Fecha Nacimiento<input type='text' name='txtDate' id='' placeholder='15/12/2001'></p>
+            <p>Fecha Nacimiento<input type='date' name='txtDate' id='' placeholder='15/12/2001'></p>
             
-            <p>Localidad</p>
-            <select name='' id=''>
-                <option value='Jaén'>Jaén</option>
-                <option value='Madrid'>Madrid</option>
-                <option value='Argentina'>Argentina</option>
-            </select>
             <input type='submit' value='Aceptar'>
         </form>
         ";
