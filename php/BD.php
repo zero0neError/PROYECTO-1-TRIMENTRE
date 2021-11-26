@@ -6,7 +6,7 @@ Class BD{
 
     public static function conectar(){
         try {
-            self::$conexion = new PDO('mysql:host=localhost;dbname=foro', 'root', '');
+            self::$conexion = new PDO("mysql:host=localhost;dbname=foro", 'root', '');
             return true;
         } catch (\Throwable $th) {
             return false;
@@ -24,7 +24,7 @@ Class BD{
         //BLOQUE1________ESTE BLOQUE SE ENCARGA DE LEER EL NOMBRE DE LAS COLUMNAS DE UNA TABLA
         $numeroColumas=0;
         $nombresColumnas=array();
-        $sql="select COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS where TABLE_SCHEMA = '$BD' and TABLE_NAME = '$tabla'";
+        $sql="select COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS where TABLE_SCHEMA = '.$BD.' and TABLE_NAME = '$tabla'";
         $result = self::$conexion->query($sql);
         while($registro = $result->fetch()){
             ++$numeroColumas;
@@ -32,15 +32,30 @@ Class BD{
         
         //____________BLOQUE1
 
-        //BLOQUE2________se encarga de añadir las interrograciones dependiendo del numeroColumnas
+        //BLOQUE2________Se encarga de añadir las interrograciones dependiendo del numeroColumnas
         $sql="INSERT INTO $tabla values (".str_repeat("?,",$numeroColumas);
         $sql_final=substr($sql,0,(strlen($sql)-1)).")";
         $consulta = self::$conexion->prepare($sql_final);
-        $count=0;
-        for($i=0;$i<count($array);$i++){
-            $consulta->bindParam(++$count,$array[$i]);
+        $cont=0;
+        // for($i=0;$i<count($array);$i++){
+        //     $consulta->bindParam($cont++,$array[$i]);
+        //     echo $cont;
+        // }
+        $a="null";
+        $b="pene";
+        $c="eureka";
+        $d="NOW()";
+        $e="null";
+        $consulta->bindParam(1,$a);
+        $consulta->bindParam(2,$b);
+        $consulta->bindParam(3,$c);
+        $consulta->bindParam(4,$d);
+        $consulta->bindParam(5,$e);
+        
+        if(!$consulta->execute()){
+
+            echo "false";
         }
-        $consulta->execute();
 
         //____________BLOQUE2
     }

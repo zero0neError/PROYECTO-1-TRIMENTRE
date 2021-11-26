@@ -11,12 +11,12 @@
     <?php
         if(isset($_POST['Enviar']) && $_POST['email']!=""){
             
-            require_once "libs/BD.php";
-            require_once "libs/Sesion.php";
-            require_once "libs/Usuario.php";
+            require_once "BD.php";
+            require_once "../libs/Sesion.php";
+            require_once "../entidades/Usuario.php";
             if(BD::Conectar()){
 
-                $respuesta = BD::isUser($users,$_POST['email'],$_POST['email'], $_POST['password']);
+                $respuesta = BD::isUser($users,$_POST['email'], $_POST['password']);
 
                 if($respuesta!=false){
 
@@ -24,18 +24,21 @@
                     $user=new Usuario();
                     $user->sesion($_POST['email'],$_POST['email']);
                     Sesion::setSesion("usuario",$user);
-        
+                    var_dump($user);
                 }
             }
         }
     ?>
+    <img src="../imagenes/pipo.jpg" alt="hamster">
     <form action="" method="post">
         <p>Usuario/email</p>
         <input type="text" name="email" placeholder="Introduce tu usuario">
         <p>Contraseña</p>
         <input type="password" name="password">
-        <p><input type="submit" name="Enviar" value="Aceptar"></p>
+        <input type="submit" name="Enviar" value="Aceptar">  
+        <a href="#">¿Has olvidado la contraseña?</a>
     </form>
+    
     
 </body>
 </html>
