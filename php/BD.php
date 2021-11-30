@@ -6,7 +6,7 @@ Class BD{
 
     public static function conectar(){
         try {
-            self::$conexion = new PDO("mysql:host=localhost;dbname=foro", 'root', '');
+            self::$conexion = new PDO("mysql:host=localhost;dbname=autoescuela", 'root', '');
             return true;
         } catch (\Throwable $th) {
             return false;
@@ -75,14 +75,11 @@ Class BD{
 
     }
 
-    public static function isUser($tabla,$email,$nick,$contraseña){
-        $sql="select * from $tabla where email like '$email' AND password like '$contraseña'";
+    public static function isUser($email,$contraseña){
+        $sql="select * from usuario where email like '${email}' AND password like '${contraseña}'";
         $consulta=self::$conexion->query($sql);
-        if($consulta!=false){
-            return true;
-        }else{
-            return false;
-        }
+        $count = $consulta->rowCount();
+        return $count==1;
     }
 
     public static function listadoContenidoTabla($tabla){
