@@ -1,9 +1,18 @@
 <?php
     include_once "../clases/Sesion.php";
     include_once "BD.php";
+    echo "<script>
+        if(localStorage.getItem('id')!=''){
+            const ajax = new XMLHttpRequest();
+            ajax.open("POST", changePassword.php);
+            ajax.send(?id=localStorage.getItem('id'));
+        }
+    </script>";
     //Comprueba si el usuario esta logeado, aqui no tiene sentido porque no hace falta estar logeado para estar aqui, pero si hace falta que se haya accedido desde la venta de usuario  
     if(isset($_GET['id']) && $_GET['id']!=""){
-
+        echo "<script>
+                localStorage.setItem('id',$_GET['id']);
+            </script>";
         if(isset($_POST['Enviar']) && $_POST['password']!="" && $_POST['repeatPassword']!=""){
             $pass1=$_POST['password'];
             $pass2=$_POST['repeatPassword'];
