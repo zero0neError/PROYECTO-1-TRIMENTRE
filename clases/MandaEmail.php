@@ -6,15 +6,15 @@ function MandaEmail($destino,$asunto,$mensaje){
     $mail = new PHPMailer();
     $mail->IsSMTP();
     // cambiar a 0 para no ver mensajes de error
-    $mail->SMTPDebug  = 4;                          
+    $mail->SMTPDebug  = 0;                          
     $mail->SMTPAuth   = true;
-    $mail->SMTPSecure = "tls";                 
+    $mail->SMTPSecure = "ssl";                 
     $mail->Host       = "smtp.gmail.com";    
-    $mail->Port       = 587;                 
+    $mail->Port       = 465;                 
 
-    $mail->Username   = "autosusmuertos@gmail.com"; 
+    $mail->Username   = "autolospanchos@gmail.com"; 
     $mail->Password   = "954678123#";  
-    $mail->SetFrom("autosusmuertos@gmail.com", "AutoTusMuertos");
+    $mail->SetFrom("autosusmuertos@gmail.com", "AutoLosPanchos");
     $mail->Subject=$asunto;
     // cuerpo
     //$mail->AddEmbeddedImage("../imagenes/pipo.jpg","foto");

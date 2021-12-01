@@ -83,6 +83,32 @@ Class BD{
         return $count==1;
     }
 
+    public static function introduceHash($correo,$hash){
+
+        $sql = "UPDATE usuario SET hash=? WHERE email=?";
+        $consulta= self::$conexion->prepare($sql);
+        $consulta->bindParam(1,$hash);
+        $consulta->bindParam(2,$correo);
+        return $consulta->execute();
+    }
+
+    public static function resetHash($hash){
+
+        $sql = "UPDATE usuario SET hash=NULL WHERE hash=?";
+        $consulta= self::$conexion->prepare($sql);
+        $consulta->bindParam(1,$hash);
+        return $consulta->execute();
+    }
+
+    public static function updatePassword($hash,$pass){
+
+        $sql = "UPDATE usuario SET password=? WHERE hash=?";
+        $consulta= self::$conexion->prepare($sql);
+        $consulta->bindParam(1,$pass);
+        $consulta->bindParam(2,$hash);
+        return $consulta->execute();
+    }
+
     public static function isUser($email,$contraseña){
         $sql="select * from usuario where email like '${email}' AND password like '${contraseña}'";
         $consulta=self::$conexion->query($sql);

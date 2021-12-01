@@ -36,8 +36,7 @@
         <p>Contraseña</p>
         <input type="password" name="password">
         <input type="submit" name="Enviar" value="Aceptar">  
-        <a href="#">¿Has olvidado la contraseña?</a>
-        <a href="#">Nueva Cuenta</a>
+        <a href="enviaCorreo.php">¿Has olvidado la contraseña?</a>
     </form>
     
     

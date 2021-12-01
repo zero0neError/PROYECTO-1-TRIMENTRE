@@ -17,7 +17,10 @@
                 if(BD::existeCorreo($_POST['correo'])){
 
                     $hash=md5($_POST['correo']);
-                    MandaEmail($_POST['correo'],"Cambiar contraseña","<a href='http://localhost/PROYECTO_PRIMER_TRIMESTRE/php/ChangePassword.php?id=${hash}'>Pulsa para cambiar tu contraseña</a>",null);
+                    if(BD::introduceHash($_POST['correo'],$hash)==1){
+
+                        MandaEmail($_POST['correo'],"Cambiar contraseña","<a href='http://localhost/PROYECTO_PRIMER_TRIMESTRE/php/ChangePassword.php?id=${hash}'>Pulsa para cambiar tu contraseña</a>",null);
+                    }    
                                         
                 }else{
 
