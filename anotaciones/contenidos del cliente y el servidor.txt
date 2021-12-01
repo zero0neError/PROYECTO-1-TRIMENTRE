@@ -1,5 +1,5 @@
 -Login - Servidor
--Registro de usuarios - Servidor
+-Registro de usuarios - Servidor y Cliente
 -Historico de examenes - Cliente
 	Presionar en la cabecera para ordenar
 	Agrupacion en 10 filas y usando tambien paginas
@@ -11,3 +11,5 @@
 
 
 -Revisar examen - Cliente
+
+-Alta masiva preguntas y usuario - Cliente y servidor
