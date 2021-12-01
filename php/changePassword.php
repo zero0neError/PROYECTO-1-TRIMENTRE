@@ -2,7 +2,7 @@
     include_once "../clases/Sesion.php";
     include_once "BD.php";
     //Comprueba si el usuario esta logeado, aqui no tiene sentido porque no hace falta estar logeado para estar aqui, pero si hace falta que se haya accedido desde la venta de usuario  
-    // if(isset($_GET['id'])){
+    if(isset($_GET['id']) && $_GET['id']!=""){
 
         if(isset($_POST['Enviar']) && $_POST['password']!="" && $_POST['repeatPassword']!=""){
             $pass1=$_POST['password'];
@@ -20,10 +20,10 @@
             }
         }
         
-    // }else{
-
-    //     // header("Location: Login.php");
-    // }
+    }else{
+        echo "cambiaria la pagina";
+         // header("Location: Login.php");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +36,7 @@
     <title>Cambiar contraseña</title>
 </head>
 <body>
-    <form action="ChangePassword.php" method="post">
+    <form action="ChangePassword.pshp" method="post">
         <p>Introduce tu nueva contraseña</p>
         <input type="text" name="password" id="txtPassword">
         <p>Repite tu nueva contraseña</p>
@@ -45,3 +45,4 @@
     </form>
 </body>
 </html>
+
