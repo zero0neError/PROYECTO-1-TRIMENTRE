@@ -75,6 +75,14 @@ Class BD{
 
     }
 
+    public static function existeCorreo($correo){
+
+        $sql="select * from usuario where email like '${correo}'";
+        $consulta=self::$conexion->query($sql);
+        $count = $consulta->rowCount();
+        return $count==1;
+    }
+
     public static function isUser($email,$contraseña){
         $sql="select * from usuario where email like '${email}' AND password like '${contraseña}'";
         $consulta=self::$conexion->query($sql);

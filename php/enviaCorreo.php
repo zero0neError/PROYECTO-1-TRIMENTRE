@@ -11,19 +11,24 @@
         if(isset($_POST['Enviar']) && $_POST['correo']!=""){
 
             include_once "../php/BD.php";
+            include_once "../clases/MandaEmail.php";
             if(BD::conectar()){
 
                 if(BD::existeCorreo($_POST['correo'])){
 
                     $hash=md5($_POST['correo']);
-                    Email::mandaEmail($_POST['correo'],"Cambiar contraseña","<a href='http://localhost/PROYECTO_PRIMER_TRIMESTRE/php/ChangePassword.php?id=${hash}'>Pulsa para cambiar tu contraseña</a>",null);
+                    MandaEmail($_POST['correo'],"Cambiar contraseña","<a href='http://localhost/PROYECTO_PRIMER_TRIMESTRE/php/ChangePassword.php?id=${hash}'>Pulsa para cambiar tu contraseña</a>",null);
+                                        
+                }else{
+
+                    echo "<p>Correo introducido no existe</p>";
                 }
             }
             
         }
     ?>
     
-    <form action="" method="post">
+    <form action="enviaCorreo.php" method="post">
         <p>Introduce tu direccion de email</p>
         <input type="text" name="correo" id="correo"><br>
         <input type="submit" value="Enviar" name="Enviar">
