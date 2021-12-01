@@ -60,3 +60,11 @@ a{
     display: inline-block;
     margin-top: 10px;
 }
+
+.error{
+
+    color:red;
+    font-weight: bold;
+    position: relative;
+    margin-left: 45%;
+}

@@ -8,9 +8,8 @@ Class Usuario{
     private $fechaNacimiento;
     private $rol;
     private $foto;
-    private $activo;
 
-    public function __construct($e,$n,$aps,$p,$fN,$r,$f,$a){
+    public function __construct($e,$n,$aps,$p,$fN,$r,$f){
 
         $this->email=$e;
         $this->nombre=$n;
@@ -19,8 +18,12 @@ Class Usuario{
         $this->fechaNacimiento=$fN;
         $this->rol=$r;
         $this->foto=$f;
-        $this->activo=$a;
 
+    }
+
+    public function sesion($correo){
+
+        $this->email=$correo;
     }
 
     public function getEmail(){
