@@ -101,11 +101,11 @@ Class BD{
     }
 
     public static function updatePassword($hash,$pass){
-
+        
         $sql = "UPDATE usuario SET password=? WHERE hash=?";
         $consulta= self::$conexion->prepare($sql);
-        $consulta->bindParam(1,$pass);
-        $consulta->bindParam(2,$hash);
+        $consulta->bindParam(1,$hash);
+        $consulta->bindParam(2,$pass);
         return $consulta->execute();
     }
 
