@@ -107,6 +107,7 @@ Class BD{
         $consulta->bindParam(1,$hash);
         $consulta->bindParam(2,$pass);
         return $consulta->execute();
+
     }
 
     public static function isUser($email,$contraseña){

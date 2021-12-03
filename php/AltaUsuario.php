@@ -8,26 +8,43 @@
     <title>Document</title>
 </head>
 <body>
-    
-    <?php
-        echo "
-        <p id='titulo'>Alta Usuario</p>
+        <?php
+        include_once "BD.php";
+        if(isset($_POST['txtEmail']) && isset($_POST['txtName']) && isset($_POST['txtLastName']) && isset($_POST['txtDate']) && isset($_POST['selectRol']) && isset($_POST['Enviar'])){
+
+            if(BD::conectar()){
+
+                if(!BD::existeCorreo($_POST['txtEmail'])){
+
+                    
+                }else{
+
+                    echo "<p>Ese correo ya esta en uso</p>";
+                }
+            }
+        }else{
+
+            echo "<p>No dejes campos vacios</p>";
+        }
+       
+        ?>
+    <p id='titulo'>Alta Usuario</p>
         <form action='' id='form1'>
-            <p>Email<input type='text' name='txtEmail' id='' placeholder='xxxx@gmail.com'></p>
+            <p>Email</p><input type='text' name='txtEmail' id='' placeholder='xxxx@gmail.com'><br>
             
-            <p>Nombre<input type='text' name='txtName' id='' placeholder='Julian'></p>
+            <p>Nombre</p><input type='text' name='txtName' id='' placeholder='Julian'><br>
             
-            <p>Apellidos<input type='text' name='txtLastName' id='' placeholder='Rueda Padilla'></p>
+            <p>Apellidos</p><input type='text' name='txtLastName' id='' placeholder='Rueda Padilla'><br>
             
-            <p>Contraseña<input type='text' name='txtPassword' id='' placeholder='1234'></p>
+            <p>Fecha Nacimiento</p><input type='date' name='txtDate' id='' placeholder='15/12/2001'><br>
+
+            <p>Rol</p>
+            <select name="selectRol" id="selectRol">
+                <option value="Usuario">Usuario</option>
+                <option value="Admin">Admin</option>
+            </select><br>
             
-            <p>Confirmar contraseña<input type='text' name='txtPassword2' id='' placeholder='1234'></p>
-            
-            <p>Fecha Nacimiento<input type='date' name='txtDate' id='' placeholder='15/12/2001'></p>
-            
-            <input type='submit' value='Aceptar'>
+            <input type='submit' name="Enviar" value='Aceptar'>
         </form>
-        ";
-    ?>
 </body>
 </html>

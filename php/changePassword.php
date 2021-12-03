@@ -1,14 +1,8 @@
 <?php
     include_once "../clases/Sesion.php";
     include_once "BD.php";
-    
     //Comprueba si el usuario esta logeado, aqui no tiene sentido porque no hace falta estar logeado para estar aqui, pero si hace falta que se haya accedido desde la venta de usuario  
-    if(isset($_COOKIE['id'])){
-        
-
-
-        echo "<p>".isset($_POST['Enviar'])." - ".!empty($_POST['password'])." - ".!empty($_POST['password'])."</p>";
-
+    if(isset($_GET['id'])){
 
 
         if(isset($_POST['Enviar']) && !empty($_POST['password']) && !empty($_POST['repeatPassword'])){
@@ -19,19 +13,23 @@
             
             if($pass1==$pass2){
 
-                if(BD::updatePassword($pass1,$_COOKIE['id'])==1){
 
-                    BD::resetHash($hash);
+                if(BD::conectar()){
+
+                    if(BD::updatePassword($pass1,$_GET['id'])==1){
+
+                        BD::resetHash($_GET['id']);
+                    }
                 }
                 
+                
             }else{
-                echo "<p>Las contraseñas no coinciden</p>";
+                echo "<p style='color:red'>Las contraseñas no coinciden</p>";
             }
         }
         
     }else{
-        echo "cambiaria la pagina";
-         // header("Location: Login.php");
+        header("Location: Login.php");
     }
 ?>
 <!DOCTYPE html>

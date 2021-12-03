@@ -19,9 +19,9 @@
 
                 if(BD::isUser($_POST['email'], $_POST['password'])){
 
-                    echo "<script>alert('Bienvenido')</script>";
                     Sesion::init();
                     Sesion::setSesion("usuario",$_POST['email']);
+                    header("Location: ");
                 }else{
 
                     echo "<script>alert('Email o contraseña incorrectos')</script>";
