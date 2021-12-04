@@ -8,43 +8,65 @@
     <title>Document</title>
 </head>
 <body>
-        <?php
+    <?php
         include_once "BD.php";
-        if(isset($_POST['txtEmail']) && isset($_POST['txtName']) && isset($_POST['txtLastName']) && isset($_POST['txtDate']) && isset($_POST['selectRol']) && isset($_POST['Enviar'])){
+        include_once "../clases/MandaEmail.php";
+        include_once "../clases/Usuario.php";
+        if(isset($_POST['Enviar'])){
+            
+            if(isset($_POST['txtEmail']) && isset($_POST['txtName']) && isset($_POST['txtLastName']) && isset($_POST['txtDate']) && isset($_POST['selectRol'])){
 
-            if(BD::conectar()){
-
-                if(!BD::existeCorreo($_POST['txtEmail'])){
-
+                
+                if(BD::conectar()){
                     
-                }else{
+                    if(!BD::existeCorreo($_POST['txtEmail'])){
+                        
+                        $usuario=new Usuario($_POST['txtEmail'],$_POST['txtName'],$_POST['txtLastName'],"",$_POST['txtDate'], $_POST['selectRol'],"");
 
-                    echo "<p>Ese correo ya esta en uso</p>";
+                        try {
+                            BD::insertUsuario($usuario);
+                            $hash=md5($_POST['txtEmail']);
+        
+                            if(BD::introduceHash($_POST['txtEmail'],$hash)==1){
+                                
+                                MandaEmail($_POST['txtEmail'],"Cambiar contraseña","<p><h1>Hola ".$_POST['txtName'].", ".$_POST['txtLastName']."</h1></p><br><p>Establezca una contraseña para su cuenta</p><br><a href='http://localhost/PROYECTO_PRIMER_TRIMESTRE/php/ChangePassword.php?id=${hash}'>Pulsa para cambiar tu contraseña</a>",null);
+                            }
+                        } catch (\Throwable $th) {
+                            echo "Se ha producido un error";
+                        }
+
+                    }else{
+
+                        echo "<p>Ese correo ya esta en uso</p>";
+                    }
                 }
-            }
-        }else{
 
-            echo "<p>No dejes campos vacios</p>";
+            }else{
+
+                echo "<p>No dejes campos vacios</p>";
+            }
+
         }
        
-        ?>
+    ?>
     <p id='titulo'>Alta Usuario</p>
-        <form action='' id='form1'>
-            <p>Email</p><input type='text' name='txtEmail' id='' placeholder='xxxx@gmail.com'><br>
+    <form action='AltaUsuario.php' id='form1' method="POST">
+        <p>Email</p><input type='text' name='txtEmail' id='' placeholder='xxxx@gmail.com'><br>
             
-            <p>Nombre</p><input type='text' name='txtName' id='' placeholder='Julian'><br>
+        <p>Nombre</p><input type='text' name='txtName' id='' placeholder='Julian'><br>
             
-            <p>Apellidos</p><input type='text' name='txtLastName' id='' placeholder='Rueda Padilla'><br>
+        <p>Apellidos</p><input type='text' name='txtLastName' id='' placeholder='Rueda Padilla'><br>
             
-            <p>Fecha Nacimiento</p><input type='date' name='txtDate' id='' placeholder='15/12/2001'><br>
+        <p>Fecha Nacimiento</p><input type='date' name='txtDate' id='' placeholder='15/12/2001'><br>
 
-            <p>Rol</p>
-            <select name="selectRol" id="selectRol">
-                <option value="Usuario">Usuario</option>
-                <option value="Admin">Admin</option>
-            </select><br>
+        <p>Rol</p>
+        <select name="selectRol" id="selectRol">
+            <option value="Usuario">Usuario</option>
+            <option value="Admin">Admin</option>
+        </select><br>
             
-            <input type='submit' name="Enviar" value='Aceptar'>
-        </form>
+        <input type='submit' name="Enviar" value='Aceptar'>
+    </form>
+    
 </body>
 </html>

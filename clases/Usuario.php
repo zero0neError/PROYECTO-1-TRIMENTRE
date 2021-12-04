@@ -48,7 +48,7 @@ Class Usuario{
 
     public function getFechaNacimiento(){
 
-        return $this->FechaNacimiento;
+        return $this->fechaNacimiento;
     }
 
     public function getRol(){
@@ -59,11 +59,6 @@ Class Usuario{
     public function getFoto(){
 
         return $this->foto;
-    }
-
-    public function getActivo(){
-
-        return $this->activo;
     }
 
 }

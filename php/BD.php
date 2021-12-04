@@ -92,6 +92,24 @@ Class BD{
         return $consulta->execute();
     }
 
+    public static function insertUsuario($usuario){
+        $email=$usuario->getEmail();
+        $nombre=$usuario->getNombre();
+        $ape=$usuario->getApellidos();
+        $fecha=$usuario->getFechaNacimiento();
+        $rol=$usuario->getRol();
+        $sql="INSERT INTO `usuario`(`id`, `email`, `nombre`, `apellidos`, `password`, `fechaNacimiento`, `rol`, `foto`, `hash`) VALUES (NULL,?,?,?,NULL,?,?,NULL,NULL)";        
+        $consulta=self::$conexion->prepare($sql);
+        $consulta->bindParam(1,$email);
+        $consulta->bindParam(2,$nombre);
+        $consulta->bindParam(3,$ape);
+        $consulta->bindParam(4,$fecha);
+        $consulta->bindParam(5,$rol);
+        $consulta->execute();
+
+        
+    }
+
     public static function resetHash($hash){
 
         $sql = "UPDATE usuario SET hash=NULL WHERE hash=?";
