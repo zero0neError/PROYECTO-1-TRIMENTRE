@@ -8,20 +8,34 @@
     <title>Autoescuela los panchos</title>
 </head>
 <body>
-    <img src="../imagenes/pipo.jpg" height="150px" width="1460px" alt="hamster">
-    <nav id="menu">
-    <ul>
-        <li><a href="#">Usuarios</a></li>
-        <li><a href="#">Tematicas</a>
-        <!-- start menu desplegable -->
-            <ul>
-            <li><a href="#">Alta tematica</a></li>
-            </ul>
-        <!-- end menu desplegable -->
-        </li>
-        <li><a href="#">Preguntas</a></li>
-        <li><a href="#">Examenes</a></li>  
-    </ul>
-    </nav>
+    <?php
+
+        // include_once "../clases/Sesion.php";
+        // Sesion::init();
+        // if(Sesion::existe("usuario")){
+
+            echo "
+                <img src='../imagenes/pipo.jpg' height='150px' width='1460px' alt='hamster'>
+                <nav id='menu'>
+                    <ul>
+                        <li><a href='#'>Usuarios</a></li>
+                        <li><a href='#'>Tematicas</a>
+                        <!-- start menu desplegable -->
+                            <ul>
+                                <li><a href='AltaTematica.php'>Alta tematica</a></li>
+                            </ul>
+                        <!-- end menu desplegable -->
+                        </li>
+                        <li><a href='#'>Preguntas</a></li>
+                        <li><a href='#'>Examenes</a></li>  
+                    </ul>
+                 </nav>";
+
+        // }else{
+
+        //     header("Location: Login.php");
+        // }
+        
+    ?>
 </body>
 </html>

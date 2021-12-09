@@ -21,7 +21,7 @@
 
                     Sesion::init();
                     Sesion::setSesion("usuario",$_POST['email']);
-                    header("Location: ");
+                    header("Location: PaginaPrincipal.php");
                 }else{
 
                     echo "<script>alert('Email o contraseña incorrectos')</script>";

@@ -19,6 +19,7 @@
                     if(BD::updatePassword($pass1,$_GET['id'])==1){
 
                         BD::resetHash($_GET['id']);
+                        echo "<script>alert('Contraseña cambiada correctamente')<script>";
                     }
                 }
                 

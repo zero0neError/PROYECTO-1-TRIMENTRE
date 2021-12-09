@@ -118,6 +118,14 @@ Class BD{
         return $consulta->execute();
     }
 
+    public static function insertarTematica($nombre){
+
+        $sql="INSERT INTO tematica (id,nombre) VALUES (NULL,?)";
+        $consulta = self::$conexion->prepare($sql);
+        $consulta->bindParam(1,$nombre);
+        $consulta->execute();
+    }
+
     public static function updatePassword($hash,$pass){
         
         $sql = "UPDATE usuario SET password=? WHERE hash=?";
