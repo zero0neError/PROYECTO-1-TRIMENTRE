@@ -1,36 +1,35 @@
 <?php
     include_once "../clases/Sesion.php";
     include_once "BD.php";
+    echo "<script>
+        if(localStorage.getItem('id')!=''){
+            const ajax = new XMLHttpRequest();
+            ajax.open("POST", changePassword.php);
+            ajax.send(?id=localStorage.getItem('id'));
+        }
+    </script>";
     //Comprueba si el usuario esta logeado, aqui no tiene sentido porque no hace falta estar logeado para estar aqui, pero si hace falta que se haya accedido desde la venta de usuario  
-    if(isset($_GET['id'])){
-
-
-        if(isset($_POST['Enviar']) && !empty($_POST['password']) && !empty($_POST['repeatPassword'])){
-
+    if(isset($_GET['id']) && $_GET['id']!=""){
+        
+        if(isset($_POST['Enviar']) && $_POST['password']!="" && $_POST['repeatPassword']!=""){
             $pass1=$_POST['password'];
             $pass2=$_POST['repeatPassword'];
 
-            
             if($pass1==$pass2){
 
+                if(BD::updatePassword($_GET['id'],$pass1)==1){
 
-                if(BD::conectar()){
-
-                    if(BD::updatePassword($pass1,$_GET['id'])==1){
-
-                        BD::resetHash($_GET['id']);
-                        echo "<script>alert('Contraseña cambiada correctamente')<script>";
-                    }
+                    BD::resetHash($hash);
                 }
                 
-                
             }else{
-                echo "<p style='color:red'>Las contraseñas no coinciden</p>";
+                echo "<p>Las contraseñas no coinciden</p>";
             }
         }
         
     }else{
-        header("Location: Login.php");
+        echo "cambiaria la pagina";
+         // header("Location: Login.php");
     }
 ?>
 <!DOCTYPE html>
@@ -44,7 +43,7 @@
     <title>Cambiar contraseña</title>
 </head>
 <body>
-    <form action="" method="post">
+    <form action="ChangePassword.php" method="post">
         <p>Introduce tu nueva contraseña</p>
         <input type="text" name="password" id="txtPassword">
         <p>Repite tu nueva contraseña</p>
