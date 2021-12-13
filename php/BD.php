@@ -106,8 +106,87 @@ Class BD{
         $consulta->bindParam(4,$fecha);
         $consulta->bindParam(5,$rol);
         $consulta->execute();
+   
+    }
 
-        
+    /** Vuelca todas las tematicas de la base de datos
+     *  @return Devuelve un array de objetos tematica o por otro lado devuelve un Exception
+     */
+    public static function traeTematicas(){
+
+        try {
+            $sql="SELECT * FROM tematica";
+            $consulta=self::$conexion->query($sql);
+            $arr=array();
+            while ($result = $consulta->fetch(PDO::FETCH_OBJ)) {//Nos traemos los resultado en forma de objeto 
+            
+                array_push($arr,$result);//Guardamos el array de objetos
+            }
+
+            return $arr;
+        } catch (\Throwable $th) {
+            return false;
+        }
+    }
+
+    /** Vuelca todas las tematicas de la base de datos
+     *  @return Devuelve un array de objetos tematica o por otro lado devuelve un Exception
+     */
+    public static function traeUsuarios(){
+
+        try {
+            $sql="SELECT * FROM usuario";
+            $consulta=self::$conexion->query($sql);
+            $arr=array();
+            while ($result = $consulta->fetch(PDO::FETCH_OBJ)) {//Nos traemos los resultado en forma de objeto 
+            
+                array_push($arr,$result);//Guardamos el array de objetos
+            }
+
+            return $arr;
+        } catch (\Throwable $th) {
+            return false;
+        }
+    }
+
+    /** Vuelca todas las tematicas de la base de datos
+     *  @return Devuelve un array de objetos tematica o por otro lado devuelve un Exception
+     */
+    public static function traeExamenes(){
+
+        try {
+            $sql="SELECT * FROM examen";
+            $consulta=self::$conexion->query($sql);
+            $arr=array();
+            while ($result = $consulta->fetch(PDO::FETCH_OBJ)) {//Nos traemos los resultado en forma de objeto 
+            
+                array_push($arr,$result);//Guardamos el array de objetos
+            }
+
+            return $arr;
+        } catch (\Throwable $th) {
+            return false;
+        }
+    }
+
+    /** Vuelca todas las tematicas de la base de datos
+     *  @return Devuelve un array de objetos tematica o por otro lado devuelve un Exception
+     */
+    public static function traePreguntas(){
+
+        try {
+            $sql="SELECT * FROM preguntas";
+            $consulta=self::$conexion->query($sql);
+            $arr=array();
+            while ($result = $consulta->fetch(PDO::FETCH_OBJ)) {//Nos traemos los resultado en forma de objeto 
+            
+                array_push($arr,$result);//Guardamos el array de objetos
+            }
+
+            return $arr;
+        } catch (\Throwable $th) {
+            return false;
+        }
     }
 
     public static function resetHash($hash){
