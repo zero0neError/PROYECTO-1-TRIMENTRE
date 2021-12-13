@@ -126,6 +126,14 @@ Class BD{
         $consulta->execute();
     }
 
+    public static function existeTematica($tematica){
+
+        $sql="SELECT * FROM tematica WHERE nombre like '$tematica'";
+        $consulta=self::$conexion->query($sql);
+        $count = $consulta->rowCount();
+        return $count==1;
+    }
+
     public static function updatePassword($hash,$pass){
         
         $sql = "UPDATE usuario SET password=? WHERE hash=?";
