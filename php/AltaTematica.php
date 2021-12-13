@@ -20,12 +20,20 @@
 
                     if(BD::conectar()){
 
-                        BD::insertarTematica($_POST['txtDescTematica']);
+                        if(!BD::existeTematica($_POST['txtDescTematica'])){
+
+                            BD::insertarTematica($_POST['txtDescTematica']);
+
+                        }else{
+
+                            echo "<script>alert('Ya existe esa tematica')</script>";
+                        }
                     }
                 }
-            }else{
+                else{
 
-                echo "<script>alert('No dejes vacios los campos')</script>";
+                    echo "<script>alert('No dejes vacios los campos')</script>";
+                }
             }
         // }else{
 
