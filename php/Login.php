@@ -19,8 +19,9 @@
 
                 if(BD::isUser($_POST['email'], $_POST['password'])){
 
-                    Sesion::init();
-                    Sesion::setSesion("usuario",$_POST['email']);
+                    session_start();
+                    $_SESSION["usuario"]=$_POST['email'];
+                   
                     header("Location: PaginaPrincipal.php");
                 }else{
 

@@ -10,7 +10,7 @@
 
         if(!BD::traeTematicas()==false){
 
-            return creaJson($a);
+            echo creaJson($a);
         }
         
     }
