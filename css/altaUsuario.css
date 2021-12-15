@@ -4,12 +4,6 @@ body{
 	background-color: rgb(71, 114, 241);
 }
 
-#titulo{
-	background-color: royalblue;
-	padding: 30px;
-	border-radius: 8px;
-}
-
 input[type="text"]{
 
 	margin-top: 6px;

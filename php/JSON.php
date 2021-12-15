@@ -3,7 +3,7 @@
  *  @param Array $arr Onjeto
  *  @return Devuelve el JSON
  */
-public function creaJson($arr) {
+function creaJson($arr) {
 
     return json_encode($arr);
 }
