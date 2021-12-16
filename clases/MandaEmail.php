@@ -23,9 +23,9 @@ function MandaEmail($destino,$asunto,$mensaje){
     $mail->MsgHTML($mensaje);
     $resul = $mail->Send();
     if(!$resul) {
-        echo "<span class='error'>Hubo un problema al enviar el email</span>";
+        echo "<p class='error'>Hubo un problema al enviar el email</p";
     } else {
-        echo "<span class='error'>Email enviado correctamente</span>";
+        echo "<p class='non-error'>Email enviado correctamente</p>";
     }
 }
 

@@ -1,8 +1,7 @@
 <?php
-    include_once "../clases/Sesion.php";
     include_once "BD.php";
     //Comprueba si el usuario esta logeado, aqui no tiene sentido porque no hace falta estar logeado para estar aqui, pero si hace falta que se haya accedido desde la venta de usuario  
-    if(isset($_GET['id']) && $_GET['id']!=""){
+    if(isset($_GET['id'])){
         
         if(isset($_POST['Enviar']) && $_POST['password']!="" && $_POST['repeatPassword']!=""){
             $pass1=$_POST['password'];
@@ -10,19 +9,22 @@
 
             if($pass1==$pass2){
 
-                if(BD::updatePassword($_GET['id'],$pass1)==1){
+                if(BD::conectar()){
 
-                    BD::resetHash($hash);
+                    if(BD::updatePassword($_GET['id'],$pass1)==1){
+
+                        BD::resetHash($_GET['id']);
+                        echo "<p class='non-error'>Contraseña cambiada correctamete</p>";
+                    }
                 }
-                
+ 
             }else{
-                echo "<p>Las contraseñas no coinciden</p>";
+                echo "<p class='error'>Las contraseñas no coinciden</p>";
             }
         }
         
     }else{
-        echo "cambiaria la pagina";
-         // header("Location: Login.php");
+        header("Location: Login.php");
     }
 ?>
 <!DOCTYPE html>
@@ -36,7 +38,7 @@
     <title>Cambiar contraseña</title>
 </head>
 <body>
-    <form action="ChangePassword.php" method="post">
+    <form action="" method="post">
         <p>Introduce tu nueva contraseña</p>
         <input type="text" name="password" id="txtPassword">
         <p>Repite tu nueva contraseña</p>

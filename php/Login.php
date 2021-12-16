@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
     
@@ -30,7 +30,7 @@
             }
         }
     ?>
-    <img src="../imagenes/pipo.jpg" height="350px" width="300px" alt="hamster">
+    <img src="../imagenes/favicon-login.png" height="350px" width="300px" alt="hamster">
     <form action="Login.php" method="post">
         <p>Email</p>
         <input type="text" name="email" placeholder="Introduce tu usuario">
