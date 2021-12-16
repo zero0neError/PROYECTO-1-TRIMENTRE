@@ -48,43 +48,8 @@
 
         }
        
+        include_once "header_menu.php";
     ?>
-
-    <header>
-
-        <img src="../imagenes/favicon.png" alt="logo">
-        <h1 class="nombreAutoescuela">AUTOESCUELA LOS PANCHOS</h1>
-
-    </header>
-    <nav class='menu-desplegable'>
-        <ul>
-            <li><a href='#'>Usuarios</a>
-                <ul>
-                    <li><a href='#'>Alta de usuario</a></li>
-                    <li><a href='#'>Alta masiva</a></li>
-                </ul>
-            </li>          
-            <li><a href='#'>Tematicas</a>
-                <!-- start menu desplegable -->
-                <ul>
-                    <li><a href='AltaTematica.php'>Alta tematica</a></li>
-                </ul>
-                <!-- end menu desplegable -->
-            </li>
-            <li><a href='#'>Preguntas</a>
-                <ul>
-                    <li><a href='#'>Alta pregunta</a></li>
-                    <li><a href='#'>Alta masiva</a></li>
-                </ul>
-            </li>
-            <li><a href='#'>Examenes</a>
-                <ul>
-                    <li><a href='#'>Nuevo examen</a></li>
-                    <li><a href='#'>Historico</a></li>
-                </ul>
-            </li>  
-        </ul>
-    </nav>
     
     <form action='AltaUsuario.php' id='form1' method="POST">
 

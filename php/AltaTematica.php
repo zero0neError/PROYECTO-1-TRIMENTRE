@@ -9,9 +9,8 @@
 </head>
 <body>
     <?php
-        // include_once "../clases/Sesion.php";
-        // Sesion::init();
-        // if(Sesion::existe("usuario")){
+        session_start();
+        if(isset($_SESSION['usuario'])){
         
             include_once "BD.php";
 
@@ -39,10 +38,12 @@
                     echo "<p class='error'>No dejes vacios los campos</p>";
                 }
             }
-        // }else{
+        }else{
 
-        //     header("Location: Login.php");
-        // }
+            header("Location: Login.php");
+        }
+
+        include_once "header_menu.php";
     ?>
 
     <form action='' method='post'>
