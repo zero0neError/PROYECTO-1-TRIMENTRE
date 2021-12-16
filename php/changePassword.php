@@ -11,11 +11,18 @@
 
                 if(BD::conectar()){
 
-                    if(BD::updatePassword($_GET['id'],$pass1)==1){
+                    if(!BD::existeHash($_GET['id'])){
+                        
+                        if(BD::updatePassword($_GET['id'],$pass1)==1){
 
-                        BD::resetHash($_GET['id']);
-                        echo "<p class='non-error'>Contraseña cambiada correctamete</p>";
+                            BD::resetHash($_GET['id']);
+                            echo "<p class='non-error'>Contraseña cambiada correctamete</p>";
+                        }
+                    }else{
+
+                        echo "<p class='error'>Algo ha ido mal</p>";
                     }
+
                 }
  
             }else{

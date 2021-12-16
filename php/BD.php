@@ -98,14 +98,15 @@ Class BD{
         $ape=$usuario->getApellidos();
         $fecha=$usuario->getFechaNacimiento();
         $rol=$usuario->getRol();
-        $sql="INSERT INTO `usuario`(`id`, `email`, `nombre`, `apellidos`, `password`, `fechaNacimiento`, `rol`, `foto`, `hash`) VALUES (NULL,?,?,?,NULL,?,?,NULL,NULL)";        
+        $sql="INSERT INTO usuario VALUES (NULL,?,?,?,NULL,?,?,NULL,NULL)";        
         $consulta=self::$conexion->prepare($sql);
         $consulta->bindParam(1,$email);
         $consulta->bindParam(2,$nombre);
         $consulta->bindParam(3,$ape);
         $consulta->bindParam(4,$fecha);
         $consulta->bindParam(5,$rol);
-        $consulta->execute();
+
+        return $consulta->execute();
    
     }
 
@@ -221,6 +222,14 @@ Class BD{
         $consulta->bindParam(2,$hash);
         return $consulta->execute();
            
+    }
+
+    public static function existeHash($hash){
+
+        $sql="SELECT * FROM usuario WHERE hash like '$hash'";
+        $consulta=self::$conexion->query($sql);
+        $count = $consulta->rowCount();
+        return $count==1;
     }
 
     public static function isUser($email,$contraseña){

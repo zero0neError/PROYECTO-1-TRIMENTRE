@@ -18,6 +18,6 @@
         }
         
     ?>
-    
+    <img class="paginaprincipal-banner-img" src="../imagenes/favicon.png" alt="logo" height="400px">
 </body>
 </html>
