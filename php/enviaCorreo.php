@@ -25,7 +25,7 @@
                                         
                 }else{
 
-                    echo "<p>Correo introducido no existe</p>";
+                    echo "<p class='error'>Correo introducido no existe</p>";
                 }
             }
             

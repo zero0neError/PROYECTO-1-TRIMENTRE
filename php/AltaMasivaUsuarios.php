@@ -22,7 +22,7 @@
                 
                 if($_POST['area']!=""){
 
-                    AltaMasiva($_POST['area'],",");
+                    AltaMasiva($_POST['area'],",","usuarios");
 
                 }
 

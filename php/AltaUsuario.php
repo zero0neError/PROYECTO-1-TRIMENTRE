@@ -12,43 +12,51 @@
         include_once "BD.php";
         include_once "../clases/MandaEmail.php";
         include_once "../clases/Usuario.php";
-        if(isset($_POST['Enviar'])){
-            
-            if(isset($_POST['txtEmail']) && isset($_POST['txtName']) && isset($_POST['txtLastName']) && isset($_POST['txtDate']) && isset($_POST['selectRol'])){
-
-                
-                if(BD::conectar()){
-                    
-                    if(!BD::existeCorreo($_POST['txtEmail'])){
-                        
-                        $usuario=new Usuario($_POST['txtEmail'],$_POST['txtName'],$_POST['txtLastName'],"",$_POST['txtDate'], $_POST['selectRol'],"");
-
-                        try {
-                            BD::insertUsuario($usuario);
-                            $hash=md5($_POST['txtEmail']);
         
-                            if(BD::introduceHash($_POST['txtEmail'],$hash)==1){
-                                
-                                MandaEmail($_POST['txtEmail'],"Cambiar contraseña","<p><h1>Hola ".$_POST['txtName'].", ".$_POST['txtLastName']."</h1></p><br><p>Establezca una contraseña para su cuenta</p><br><a href='http://localhost/PROYECTO_PRIMER_TRIMESTRE/php/ChangePassword.php?id=${hash}'>Pulsa para cambiar tu contraseña</a>",null);
+
+        session_start();
+        if(isset($_SESSION['usuario'])){
+
+            if(isset($_POST['Enviar'])){
+            
+                if(isset($_POST['txtEmail']) && isset($_POST['txtName']) && isset($_POST['txtLastName']) && isset($_POST['txtDate']) && isset($_POST['selectRol'])){
+    
+                    
+                    if(BD::conectar()){
+                        
+                        if(!BD::existeCorreo($_POST['txtEmail'])){
+                            
+                            $usuario=new Usuario($_POST['txtEmail'],$_POST['txtName'],$_POST['txtLastName'],"",$_POST['txtDate'], $_POST['selectRol'],"");
+    
+                            try {
+                                BD::insertUsuario($usuario);
+                                $hash=md5($_POST['txtEmail']);
+            
+                                if(BD::introduceHash($_POST['txtEmail'],$hash)==1){
+                                    
+                                    MandaEmail($_POST['txtEmail'],"Cambiar contraseña","<p><h1>Hola ".$_POST['txtName'].", ".$_POST['txtLastName']."</h1></p><br><p>Establezca una contraseña para su cuenta</p><br><a href='http://localhost/PROYECTO_PRIMER_TRIMESTRE/php/ChangePassword.php?id=${hash}'>Pulsa para cambiar tu contraseña</a>",null);
+                                }
+                            } catch (\Throwable $th) {
+                                echo "<p class='error'>Se ha producido un error al mandar el email</p>";
                             }
-                        } catch (\Throwable $th) {
-                            echo "<p class='error'>Se ha producido un error al mandar el email</p>";
+    
+                        }else{
+    
+                            echo "<p class='error'>Ese correo ya esta en uso</p>";
                         }
-
-                    }else{
-
-                        echo "<p class='error'>Ese correo ya esta en uso</p>";
                     }
+    
+                }else{
+    
+                    echo "<p class='error'>No dejes campos vacios</p>";
                 }
-
-            }else{
-
-                echo "<p class='error'>No dejes campos vacios</p>";
+    
             }
-
+           
+            include_once "header_menu.php";
+        }else{
+            header("Location: Login.php");
         }
-       
-        include_once "header_menu.php";
     ?>
     
     <form action='AltaUsuario.php' id='form1' method="POST">
