@@ -9,7 +9,7 @@
         $vector_separado_clave=array(); //array que contendra los valores individuales de cada usuario
         $vector_separado_lineas=array(); //array que contendra la filas del textarea
         $vector_objetos=array();//array los objetos usuario con sus datos ya introducidos
-        $cont = 4;
+        
         $vector_separado_lineas = explode("\n",$area);
 
         // Aqui separamos cada fila por comas y metemos los valores en array_usuarios
@@ -27,7 +27,7 @@
         //##########################################
 
         if($queAltaMasiva=="usuarios"){
-
+            $cont = 4;
             // Aqui cogemos los 4 primeros valores que corresponden a un usuario, creamo el objeto y luego "borramos" los 4 utilizados para usar los 4 siguientes
             for ($i=0; $i < count($vector_separado_clave); $i++) { 
                 $usuario = new Usuario($vector_separado_clave[2],$vector_separado_clave[0],$vector_separado_clave[1],null,null,$vector_separado_clave[3],null);
@@ -63,14 +63,14 @@
         //##########################################
 
         if($queAltaMasiva=="preguntas"){
-
+            $cont = 7;
             //Maniobras,¿Que se debe hacer cuando un vehiculo adelanta?,Apartarse,Bailar macarena,No hacer nada, Tomarse una caña,1
 
-            for ($i=0; $i < count($vector_separado_clave); $i++) { 
+            for ($i=0; $i < count($vector_separado_clave); $i++) {
                 $pregunta = new Pregunta($vector_separado_clave[0],$vector_separado_clave[1],array($vector_separado_clave[2],$vector_separado_clave[3],$vector_separado_clave[4],$vector_separado_clave[5]),$vector_separado_clave[6],null);
                 array_push($vector_objetos,$pregunta);
                 $vector_separado_clave=array_splice($vector_separado_clave,$cont,count($vector_separado_clave));
-                $cont=$cont+4;
+                $cont=$cont+7;
             }
 
             if(BD::conectar()){
@@ -79,7 +79,7 @@
 
                     if(!BD::existeTematica($vector_objetos[$i]->getTematica()==1)){
 
-                        if(BD::insertPregunta($vector_objetos[$i])==1){
+                        if(BD::insertarPregunta($vector_objetos[$i])==1){
                             
                             echo "a";
                         }

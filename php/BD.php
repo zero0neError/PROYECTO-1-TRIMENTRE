@@ -201,15 +201,19 @@ Class BD{
     public static function insertarPregunta($objPregunta){
 
         $enunciadoPregunta=$objPregunta->getEnunciado();
-        $nombreTematica=$objPregunta->getTematico();
-        
-        $sql = "INSERT INTO preguntas VALUES(NULL,?,NULL,NULL,SELECT idTematica FROM tematica WHERE nombre like ?);";
-        $consulta= self::$conexion->prepare($sql);
-        $consulta->bindParam(1,$enunciadoPregunta);
-        $consulta->bindParam(2,$nombreTematica);
-        if($consulta->execute()==1){
-            
-            $sql = "INSERT INTO preguntas VALUES(NULL,?,NULL,NULL,SELECT idTematica FROM tematica WHERE nombre like ?);";
+        $nombreTematica=$objPregunta->getTematica();
+        $sql1="SELECT Id FROM tematica WHERE Nombre like $nombreTematica";
+        $consulta = self::$conexion->query($sql1);
+        while($idTematica=$consulta->fetch()){
+            echo $resul;
+        }
+        //$idTematica=$consulta->fetch();
+        if($idTematica!=""){
+
+            $sql = "INSERT INTO preguntas VALUES(NULL,?,NULL,NULL,?)";
+            $consulta=self::$conexion->prepare($sql);
+            $consulta->bindParam(1,$enunciadoPregunta);
+            $consulta->bindParam(2,$nombreTematica);
         }
     }
 
