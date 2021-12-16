@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
     <title>Document</title>
 </head>
 <body>
@@ -22,17 +23,20 @@
 
                         if(!BD::existeTematica($_POST['txtDescTematica'])){
 
-                            BD::insertarTematica($_POST['txtDescTematica']);
+                            if(BD::insertarTematica($_POST['txtDescTematica'])==1){
+
+                                echo "<p class='non-error'>Tematica insertada correctamente</p>";
+                            }
 
                         }else{
 
-                            echo "<script>alert('Ya existe esa tematica')</script>";
+                            echo "<p class='error'>Ya existe esa tematica</p>";
                         }
                     }
                 }
                 else{
 
-                    echo "<script>alert('No dejes vacios los campos')</script>";
+                    echo "<p class='error'>No dejes vacios los campos</p>";
                 }
             }
         // }else{
@@ -42,7 +46,7 @@
     ?>
 
     <form action='' method='post'>
-        <label>Descripcion</label>
+        <p>Descripcion</p>
         <input type='text' name='txtDescTematica' id='tematica'>
         <input type='submit' value='Enviar' name='Enviar'>
     </form>

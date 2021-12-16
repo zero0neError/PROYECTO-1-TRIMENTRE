@@ -202,7 +202,7 @@ Class BD{
         $sql="INSERT INTO tematica (id,nombre) VALUES (NULL,?)";
         $consulta = self::$conexion->prepare($sql);
         $consulta->bindParam(1,$nombre);
-        $consulta->execute();
+        return $consulta->execute();
     }
 
     public static function existeTematica($tematica){

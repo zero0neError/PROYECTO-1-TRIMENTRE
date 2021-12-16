@@ -28,7 +28,7 @@
         <ul>
             <li><a href='#'>Usuarios</a>
                 <ul>
-                    <li><a href='#'>Alta de usuario</a></li>
+                    <li><a href='AltaUsuario.php'>Alta de usuario</a></li>
                     <li><a href='#'>Alta masiva</a></li>
                 </ul>
             </li>          

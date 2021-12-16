@@ -32,18 +32,18 @@
                                 MandaEmail($_POST['txtEmail'],"Cambiar contraseña","<p><h1>Hola ".$_POST['txtName'].", ".$_POST['txtLastName']."</h1></p><br><p>Establezca una contraseña para su cuenta</p><br><a href='http://localhost/PROYECTO_PRIMER_TRIMESTRE/php/ChangePassword.php?id=${hash}'>Pulsa para cambiar tu contraseña</a>",null);
                             }
                         } catch (\Throwable $th) {
-                            echo "Se ha producido un error";
+                            echo "<p class='error'>Se ha producido un error al mandar el email</p>";
                         }
 
                     }else{
 
-                        echo "<p>Ese correo ya esta en uso</p>";
+                        echo "<p class='error'>Ese correo ya esta en uso</p>";
                     }
                 }
 
             }else{
 
-                echo "<p>No dejes campos vacios</p>";
+                echo "<p class='error'>No dejes campos vacios</p>";
             }
 
         }
