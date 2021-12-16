@@ -217,8 +217,8 @@ Class BD{
 
         $sql = "UPDATE usuario SET password=? WHERE hash=?";
         $consulta= self::$conexion->prepare($sql);
-        $consulta->bindParam(1,$hash);
-        $consulta->bindParam(2,$pass);
+        $consulta->bindParam(1,$pass);
+        $consulta->bindParam(2,$hash);
         return $consulta->execute();
            
     }
