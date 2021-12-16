@@ -10,6 +10,7 @@
 <body>
     
     <?php
+
         if(isset($_POST['Enviar']) && $_POST['email']!=""){
             
             require_once "BD.php";
@@ -21,11 +22,16 @@
 
                     session_start();
                     $_SESSION["usuario"]=$_POST['email'];
+
+                    if($_POST['recuerdame']!=""){
+
+                        setcookie($_POST['user'],$_POST['email']);
+                    }
                    
                     header("Location: PaginaPrincipal.php");
                 }else{
 
-                    echo "<script>alert('Email o contraseña incorrectos')</script>";
+                    echo "<p class='error'>Email o contraseña incorrectos</p>";
                 }
             }
         }
@@ -38,6 +44,8 @@
         <input type="password" name="password">
         <input type="submit" name="Enviar" value="Aceptar">  
         <a href="enviaCorreo.php">¿Has olvidado la contraseña?</a>
+        <p><input type="checkbox" name="recuerdame">Recuerdame</p>
+        
     </form>
     
     

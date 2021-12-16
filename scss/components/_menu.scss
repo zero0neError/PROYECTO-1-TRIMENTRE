@@ -15,7 +15,8 @@
 
                     display:block;
                 }
-                background:#64f064;
+                
+                @include change-color-hover(#64f064,0.5s);
             }
 
         }

@@ -43,6 +43,11 @@ form input[type=radio] {
   text-align: center;
   width: 1.8em;
 }
+form input[type=checkbox] {
+  text-align: center;
+  width: 1.8em;
+  vertical-align: auto;
+}
 form select {
   margin-top: 6px;
   border-radius: 4px;
@@ -90,6 +95,7 @@ header h1 {
   padding: 0;
 }
 .menu-desplegable ul li:hover {
+  transition: 0.5s;
   background: #64f064;
 }
 .menu-desplegable ul li:hover > ul {
