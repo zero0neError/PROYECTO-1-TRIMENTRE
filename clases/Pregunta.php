@@ -1,8 +1,9 @@
 <?php
+include_once "Tematica.php";
 Class Pregunta{
 
-    include_once "Tematica.php";
-    private Tematica $tematica;
+    
+    private $nombreTematica;
     private $enunciado;
     private $arrayOptions=array();
     private $respuestaCorrecta;
@@ -11,7 +12,7 @@ Class Pregunta{
 
     public function __construct($t,$e,$aO,$rC,$r){
 
-        $this->tematica->setNombre($t);
+        $this->nombreTematica=$t;
         $this->enunciado=$e;
         $this->arrayOptions=$aO;
         $this->respuestaCorrecta=$rC;
@@ -20,7 +21,7 @@ Class Pregunta{
 
     public function getTematica(){
 
-        return $this->tematica;
+        return $this->nombreTematica;
     }
 
     public function getEnunciado(){

@@ -198,6 +198,21 @@ Class BD{
         return $consulta->execute();
     }
 
+    public static function insertarPregunta($objPregunta){
+
+        $enunciadoPregunta=$objPregunta->getEnunciado();
+        $nombreTematica=$objPregunta->getTematico();
+        
+        $sql = "INSERT INTO preguntas VALUES(NULL,?,NULL,NULL,SELECT idTematica FROM tematica WHERE nombre like ?);";
+        $consulta= self::$conexion->prepare($sql);
+        $consulta->bindParam(1,$enunciadoPregunta);
+        $consulta->bindParam(2,$nombreTematica);
+        if($consulta->execute()==1){
+            
+            $sql = "INSERT INTO preguntas VALUES(NULL,?,NULL,NULL,SELECT idTematica FROM tematica WHERE nombre like ?);";
+        }
+    }
+
     public static function insertarTematica($nombre){
 
         $sql="INSERT INTO tematica (id,nombre) VALUES (NULL,?)";

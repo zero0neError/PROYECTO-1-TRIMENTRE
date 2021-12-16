@@ -77,18 +77,15 @@
                     
                 for ($i=0; $i < count($vector_objetos); $i++) {
 
-                    if(!BD::existeTematica($vector_objetos[$i]->getTematica()->getNombre())==1){
+                    if(!BD::existeTematica($vector_objetos[$i]->getTematica()==1)){
 
-                        if(BD::insertUsuario($vector_objetos[$i])==1){
-                            $hash=md5($vector_objetos[$i]->getEmail());
-
-                            if(BD::introduceHash($vector_objetos[$i]->getEmail(),$hash)==1){
-                                MandaEmail($vector_objetos[$i]->getEmail(),"Cambiar contraseña","<a href='http://localhost/PROYECTO_PRIMER_TRIMESTRE/php/ChangePassword.php?id=${hash}'>Pulsa para cambiar tu contraseña</a>",null);
-                            }    
+                        if(BD::insertPregunta($vector_objetos[$i])==1){
+                            
+                            echo "a";
                         }
                     }else{
 
-                        echo "<p class='error'>No existe".$vector_objetos[$i]->getTematica()->getNombre()." en la base de datos</p>";
+                        echo "<p class='error'>No existe".$vector_objetos[$i]->getTematica()." en la base de datos</p>";
                     }
                         
                 }
