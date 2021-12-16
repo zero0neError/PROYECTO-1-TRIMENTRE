@@ -21,9 +21,11 @@
                 array_push($vector_separado_clave,$temp[$j]);
             }
         }
+
         //##########################################
         //##########ALTA MASIVA DE USUARIOS#########
         //##########################################
+
         if($queAltaMasiva=="usuarios"){
 
             // Aqui cogemos los 4 primeros valores que corresponden a un usuario, creamo el objeto y luego "borramos" los 4 utilizados para usar los 4 siguientes
@@ -56,9 +58,41 @@
             }
         }
 
+        //##########################################
+        //##########ALTA MASIVA DE PREGUNTAS########
+        //##########################################
+
         if($queAltaMasiva=="preguntas"){
 
+            //Maniobras,¿Que se debe hacer cuando un vehiculo adelanta?,Apartarse,Bailar macarena,No hacer nada, Tomarse una caña,1
 
+            for ($i=0; $i < count($vector_separado_clave); $i++) { 
+                $pregunta = new Pregunta($vector_separado_clave[0],$vector_separado_clave[1],array($vector_separado_clave[2],$vector_separado_clave[3],$vector_separado_clave[4],$vector_separado_clave[5]),$vector_separado_clave[6],null);
+                array_push($vector_objetos,$pregunta);
+                $vector_separado_clave=array_splice($vector_separado_clave,$cont,count($vector_separado_clave));
+                $cont=$cont+4;
+            }
+
+            if(BD::conectar()){
+                    
+                for ($i=0; $i < count($vector_objetos); $i++) {
+
+                    if(!BD::existeTematica($vector_objetos[$i]->getTematica()->getNombre())==1){
+
+                        if(BD::insertUsuario($vector_objetos[$i])==1){
+                            $hash=md5($vector_objetos[$i]->getEmail());
+
+                            if(BD::introduceHash($vector_objetos[$i]->getEmail(),$hash)==1){
+                                MandaEmail($vector_objetos[$i]->getEmail(),"Cambiar contraseña","<a href='http://localhost/PROYECTO_PRIMER_TRIMESTRE/php/ChangePassword.php?id=${hash}'>Pulsa para cambiar tu contraseña</a>",null);
+                            }    
+                        }
+                    }else{
+
+                        echo "<p class='error'>No existe".$vector_objetos[$i]->getTematica()->getNombre()." en la base de datos</p>";
+                    }
+                        
+                }
+            }
         }
 
 

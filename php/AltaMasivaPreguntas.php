@@ -13,7 +13,7 @@
         if(isset($_SESSION['usuario'])){
 
             include_once "header_menu.php";
-            include_once "../clases/Usuario.php";
+            include_once "../clases/Pregunta.php";
             include_once "../clases/MandaEmail.php";
             include_once "../clases/AltaMasiva.php";
             include_once "BD.php";
@@ -22,7 +22,7 @@
                 
                 if($_POST['area']!=""){
 
-                    AltaMasiva($_POST['area'],",","usuarios");
+                    AltaMasiva($_POST['area'],";","preguntas");
 
                 }
 
@@ -31,12 +31,12 @@
         
         }else{
             header("Location: Login.php");
-        }   
+        }
     
     ?>
     <form action="" method="post">
         <textarea name="area" id="area" cols="70" rows="20"></textarea>
-        <input type="submit" value="Enviar" name="Enviar" placeholder="Name,LastName,Email,Rol"> 
+        <input type="submit" value="Enviar" name="Enviar"> 
     </form>
     
 

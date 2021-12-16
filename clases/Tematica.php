@@ -8,7 +8,12 @@ Class Tematica{
         $this->nombre=$n;
     }
 
-    public function getNombreTematica(){
+    public function setNombre($n){
+
+        $this->nombre=$n;
+    }
+
+    public function getNombre(){
 
         return $this->nombre;
     }

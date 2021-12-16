@@ -32,7 +32,7 @@
             <li><a href='#'>Preguntas</a>
                 <ul>
                     <li><a href='AltaPregunta.php'>Alta pregunta</a></li>
-                    <li><a href='#'>Alta masiva</a></li>
+                    <li><a href='AltaMasivaPreguntas.php'>Alta masiva</a></li>
                 </ul>
             </li>
             <li><a href='#'>Examenes</a>

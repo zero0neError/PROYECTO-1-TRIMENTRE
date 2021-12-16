@@ -29,6 +29,13 @@ form{
         height: 2em;
         width: 18em;
     }
+
+    input[type="radio"]{
+
+        margin-left: 6px;
+        text-align: center;
+        width: 1.8em;
+    }
     
     select{
 
@@ -49,9 +56,6 @@ form{
     }
 
     textarea{
-
-        border:2px black;
-        border-radius: 3px;
         font-size: 20px;
     }
 }

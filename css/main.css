@@ -38,6 +38,11 @@ form input {
   height: 2em;
   width: 18em;
 }
+form input[type=radio] {
+  margin-left: 6px;
+  text-align: center;
+  width: 1.8em;
+}
 form select {
   margin-top: 6px;
   border-radius: 4px;
