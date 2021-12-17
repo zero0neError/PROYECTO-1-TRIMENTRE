@@ -20,6 +20,7 @@
                 <ul>
                     <li><a href='AltaUsuario.php'>Alta de usuario</a></li>
                     <li><a href='AltaMasivaUsuarios.php'>Alta masiva</a></li>
+                    <li><a href='borrarUsuario.php'>Borra usuario</a></li>
                 </ul>
             </li>          
             <li><a href='#'>Tematicas</a>
@@ -43,5 +44,8 @@
             </li>  
         </ul>
     </nav>
+    <footer>
+
+    </footer>
 </body>
 </html>

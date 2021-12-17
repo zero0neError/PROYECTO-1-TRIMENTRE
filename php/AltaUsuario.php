@@ -15,7 +15,7 @@
         
 
         session_start();
-        if(isset($_SESSION['usuario'])){
+        //if(isset($_SESSION['usuario'])){
 
             if(isset($_POST['Enviar'])){
             
@@ -54,9 +54,9 @@
             }
            
             include_once "header_menu.php";
-        }else{
-            header("Location: Login.php");
-        }
+        // }else{
+        //     header("Location: Login.php");
+        // }
     ?>
     
     <form action='AltaUsuario.php' id='form1' method="POST">

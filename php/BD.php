@@ -41,11 +41,7 @@ Class BD{
         //     $consulta->bindParam($cont++,$array[$i]);
         //     echo $cont;
         // }
-        $a="null";
-        $b="pene";
-        $c="eureka";
-        $d="NOW()";
-        $e="null";
+        
         $consulta->bindParam(1,$a);
         $consulta->bindParam(2,$b);
         $consulta->bindParam(3,$c);
@@ -150,6 +146,23 @@ Class BD{
         }
     }
 
+    public static function traeUsuariosPorCorreo($correo){
+
+        try {
+            $sql="SELECT * FROM usuario WHERE email='$correo'";
+            $consulta=self::$conexion->query($sql);
+            $arr=array();
+            while ($result = $consulta->fetch(PDO::FETCH_OBJ)) {//Nos traemos los resultado en forma de objeto 
+                
+                array_push($arr,$result);//Guardamos el array de objetos
+            }
+
+            return $arr;
+        } catch (\Throwable $th) {
+            return false;
+        }
+    }
+
     /** Vuelca todas las tematicas de la base de datos
      *  @return Devuelve un array de objetos tematica o por otro lado devuelve un Exception
      */
@@ -215,6 +228,14 @@ Class BD{
             $consulta->bindParam(1,$enunciadoPregunta);
             $consulta->bindParam(2,$nombreTematica);
         }
+    }
+
+    public static function borraUsuario($email){
+
+        $sql="DELETE FROM usuario WHERE email=?";
+        $consulta=self::$conexion->prepare($sql);
+        $consulta->bindParam(1,$email);
+        return $consulta->execute();
     }
 
     public static function insertarTematica($nombre){

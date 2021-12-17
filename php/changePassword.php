@@ -11,7 +11,7 @@
 
                 if(BD::conectar()){
 
-                    if(!BD::existeHash($_GET['id'])){
+                    if(BD::existeHash($_GET['id'])){
                         
                         if(BD::updatePassword($_GET['id'],$pass1)==1){
 
