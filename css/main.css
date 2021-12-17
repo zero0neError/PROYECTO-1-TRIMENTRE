@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles&display=swap");
 body {
   font-size: 1.7rem;
@@ -82,12 +83,14 @@ header h1 {
   letter-spacing: 1px;
 }
 
+/* La caja del menú (nav)*/
 .menu-desplegable {
   display: inline-block;
   width: 100%;
   background-color: #90ee90;
 }
 .menu-desplegable ul li {
+  /* Los primeros li los primeros que se ven, no el submenu */
   background-color: #90ee90;
   position: relative;
   float: left;
@@ -102,6 +105,7 @@ header h1 {
   display: block;
 }
 .menu-desplegable ul a {
+  /* enlaces del menu (texto visual) */
   display: block;
   color: black;
   text-decoration: none;
@@ -112,7 +116,14 @@ header h1 {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+.menu-desplegable ul a:hover {
+  font-size: 20px;
+  transition: 0.5s;
+  transition: 0.7s;
+  color: white;
+}
 .menu-desplegable ul ul {
+  /* Aqui empieza la seccion del submenu */
   display: none;
   position: absolute;
   top: 100%;
@@ -140,4 +151,18 @@ header h1 {
   text-align: center;
   color: green;
   font-weight: 700;
+}
+
+footer {
+  background-color: #90ee90;
+  position: absolute;
+  text-align: right;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  color: black;
+}
+footer p:hover {
+  transition: 0.5s;
+  color: chartreuse;
 }/*# sourceMappingURL=main.css.map */

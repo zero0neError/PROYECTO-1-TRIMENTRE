@@ -45,7 +45,9 @@
         </ul>
     </nav>
     <footer>
-
+        <p>Telefono: 601300729</p>
+        <p>Direccion: Calle Los Panchos</p>
+        <p>Marca: Los panchos</p>
     </footer>
 </body>
 </html>

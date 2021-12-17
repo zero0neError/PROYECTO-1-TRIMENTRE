@@ -3,3 +3,22 @@
     transition: $duration;
     background: $color;
 }
+
+@mixin change-colortext-hover($color,$duration) {
+    
+    transition: $duration;
+    color: $color;
+}
+
+@mixin change-colorborder-hover($color,$duration) {
+    
+    border: $color 1px;
+    transition: $duration;
+    
+}
+
+@mixin change-textSize-hover($tamañof) {
+    
+    font-size: $tamañof;
+    transition: 0.5s;
+}

@@ -1,13 +1,16 @@
+/* La caja del menú (nav)*/
+
 .menu-desplegable{
-    display: inline-block;
+    display: inline-block;//que salga uno detras de otro
     width: 100%;
     background-color: #90ee90;
     ul{
         
         li{
+            /* Los primeros li los primeros que se ven, no el submenu */
             background-color: #90ee90;
-            position:relative;
-            float:left;
+            position:relative;//Por algun motivo estas tengo que usar estas dos aunque
+            float:left;       //oficialmente se canceen entre ellas (Investiga porqué)
             margin:0;
             padding:0;
             &:hover{
@@ -16,13 +19,18 @@
                     display:block;
                 }
                 
-                @include change-color-hover(#64f064,0.5s);
+                @include change-color-hover(#64f064,0.5s);//Esto es el efecto encargadode cambiar el color de aquellos del submenu
+                
             }
 
         }
 
         a{
-
+            &:hover{
+                @include change-textSize-hover(20px);
+                @include change-colortext-hover(white,0.7s);
+            }
+            /* enlaces del menu (texto visual) */
             display:block;
             color: black;
             text-decoration:none;
@@ -32,13 +40,17 @@
             font-family:"HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
             text-transform:uppercase;
             letter-spacing:1px;
+            
         }
 
         ul{
-
+            /* Aqui empieza la seccion del submenu */
             a{
+
+                //enlaces de los items del menu desplegable
                 line-height:120%;
                 padding:10px 15px;
+                
             }
             display:none;
             position:absolute;

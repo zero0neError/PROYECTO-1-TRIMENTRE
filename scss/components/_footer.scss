@@ -1,0 +1,17 @@
+footer{
+    
+  background-color: #90ee90;//ew el mismo que el del header pra que no dañe mucho a la vista el cambio de color
+  position: absolute;//esto es para permitir que se coloque siempre abajo
+  text-align: right;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  color: black;
+  p{
+    
+    &:hover{
+
+        @include change-colortext-hover(chartreuse,0.5s);
+    }
+  }
+}
