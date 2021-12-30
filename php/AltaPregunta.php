@@ -40,5 +40,8 @@
         <input type='radio' name='op4'>Correcta
         <input type='submit' value='Aceptar'>
     </form>
+    <?php
+        include_once "footer.php";
+    ?>
 </body>
 </html>

@@ -51,6 +51,8 @@
         <input type='text' name='txtDescTematica' id='tematica'>
         <input type='submit' value='Enviar' name='Enviar'>
     </form>
-    
+    <?php
+        include_once "footer.php";
+    ?>
 </body>
 </html>

@@ -38,7 +38,9 @@
         <textarea name="area" id="area" cols="70" rows="20"></textarea>
         <input type="submit" value="Enviar" name="Enviar" placeholder="Name,LastName,Email,Rol"> 
     </form>
-    
+    <?php
+        include_once "footer.php";
+    ?>
 
 </body>
 </html>

@@ -77,6 +77,9 @@
             
         <input type='submit' name="Enviar" value='Aceptar'>
     </form>
-    
+    <?php
+        include_once "footer.php";
+    ?>
+  
 </body>
 </html>

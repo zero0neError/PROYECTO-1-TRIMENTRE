@@ -19,5 +19,8 @@
         
     ?>
     <img class="paginaprincipal-banner-img" src="../imagenes/favicon.png" alt="logo" height="400px">
+    <?php
+        include_once "footer.php";
+    ?>
 </body>
 </html>
